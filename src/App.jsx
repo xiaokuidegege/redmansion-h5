@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 const DESIGN_WIDTH = 393
 const DESIGN_HEIGHT = 852
 const HOME_MUSIC_SRC = ''
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
 const MONTH_CONFIGS = [
   {
@@ -657,10 +658,10 @@ function App() {
       >
         {view === 'home' && (
           <>
-            <img className="nav-today" src="/assets/home/今日.svg" alt="今" />
-            <img className="nav-search" src="/assets/home/搜索.svg" alt="搜索" />
-            <img className="lantern" src="/assets/home/i.svg" alt="" />
-            <img className="month-scene" src={monthConfig.scene} alt="" />
+            <img className="nav-today" src={assetUrl('/assets/home/今日.svg')} alt="今" />
+            <img className="nav-search" src={assetUrl('/assets/home/搜索.svg')} alt="搜索" />
+            <img className="lantern" src={assetUrl('/assets/home/i.svg')} alt="" />
+            <img className="month-scene" src={assetUrl(monthConfig.scene)} alt="" />
             <div className="poem-text" aria-label={`${monthConfig.title}诗词`}>
               <div className="poem-lines" aria-hidden="true">
                 <i />
@@ -682,7 +683,7 @@ function App() {
               {monthConfig.ganzhiYear} {monthConfig.lunarMonth}
             </p>
             <section className="calendar-panel" aria-label={`${monthConfig.title}日历`}>
-              <img className="calendar-border" src="/assets/home/边框.svg" alt="" />
+              <img className="calendar-border" src={assetUrl('/assets/home/边框.svg')} alt="" />
               <div className="calendar-grid">
                 {calendarDays.map((day) => {
                   const isSelected =
@@ -710,7 +711,7 @@ function App() {
                             className="calendar-event"
                             key={`${event.type}-${event.label}`}
                           >
-                            <img src={EVENT_ICON_SRC[event.type]} alt="" />
+                            <img src={assetUrl(EVENT_ICON_SRC[event.type])} alt="" />
                             {event.showLabel && <span>{event.label}</span>}
                           </span>
                         ))}
@@ -752,7 +753,7 @@ function App() {
           <>
             <img
               className="copyright-page-art"
-              src="/assets/home/版权信息页.svg"
+              src={assetUrl('/assets/home/版权信息页.svg')}
               alt="版权信息"
             />
             <button
@@ -761,7 +762,7 @@ function App() {
               aria-label="返回首页"
               onClick={() => setView('home')}
             >
-              <img src="/assets/home/返回键.svg" alt="" />
+              <img src={assetUrl('/assets/home/返回键.svg')} alt="" />
             </button>
           </>
         )}
@@ -773,7 +774,7 @@ function App() {
               aria-label="返回首页"
               onClick={() => setView('home')}
             >
-              <img src="/assets/home/返回键.svg" alt="" />
+              <img src={assetUrl('/assets/home/返回键.svg')} alt="" />
             </button>
             <h1 className="search-title">岁时检索</h1>
             <section className="search-panel" aria-label="红楼岁时内容查询">
@@ -835,7 +836,7 @@ function App() {
               aria-label="返回搜索"
               onClick={() => setView('search')}
             >
-              <img src="/assets/home/返回键.svg" alt="" />
+              <img src={assetUrl('/assets/home/返回键.svg')} alt="" />
             </button>
             <h1 className="detail-title">岁时详情</h1>
             <section className="detail-card" aria-label="每日详情">
@@ -856,7 +857,7 @@ function App() {
         {HOME_MUSIC_SRC && <audio ref={audioRef} src={HOME_MUSIC_SRC} loop preload="auto" />}
         <img
           className="copyright-button"
-          src={isMusicPlaying ? '/assets/home/button_pause.png' : '/assets/home/button_play.png'}
+          src={isMusicPlaying ? assetUrl('/assets/home/button_pause.png') : assetUrl('/assets/home/button_play.png')}
           alt={isMusicPlaying ? '暂停音乐' : '播放音乐'}
         />
         <button

@@ -1,12 +1,12 @@
-@font-face {
+﻿@font-face {
   font-family: "HonglouXingkai";
-  src: url("/fonts/行楷.TTF") format("truetype");
+  src: url("/redmansion-h5/fonts/行楷.TTF") format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: "HonglouKaiti";
-  src: url("/fonts/楷体.TTF") format("truetype");
+  src: url("/redmansion-h5/fonts/楷体.TTF") format("truetype");
   font-display: swap;
 }
 
@@ -49,6 +49,15 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #111;
+}
+
+.viewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("/redmansion-h5/assets/home/bg-01.webp") center / cover no-repeat;
 }
 
 .page {
@@ -59,13 +68,14 @@ button {
   transform-origin: center center;
   overflow: hidden;
   touch-action: pan-y;
+  z-index: 1;
 }
 
 .home-page,
 .copyright-page,
 .search-page,
 .detail-page {
-  background: url("/assets/home/bg-01.webp") center / cover no-repeat;
+  background: url("/redmansion-h5/assets/home/bg-01.webp") center / cover no-repeat;
 }
 
 .home-page img,
@@ -267,7 +277,9 @@ button {
 .calendar-date {
   display: block;
   width: 100%;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
   font-size: 17px;
+  font-weight: 400;
   line-height: 18px;
   text-align: center;
 }
@@ -358,7 +370,7 @@ button {
   width: 15px;
   height: 20px;
   border-radius: 0;
-  background: url("/assets/home/节气1.svg") center / contain no-repeat;
+  background: url("/redmansion-h5/assets/home/节气1.svg") center / contain no-repeat;
 }
 
 .legend-person::before {
@@ -366,7 +378,7 @@ button {
   width: 14px;
   height: 18px;
   border-radius: 0;
-  background: url("/assets/home/人物生辰·1.svg") center / contain no-repeat;
+  background: url("/redmansion-h5/assets/home/人物生辰·1.svg") center / contain no-repeat;
 }
 
 .legend-festival::before {
@@ -374,7 +386,7 @@ button {
   width: 14px;
   height: 18px;
   border-radius: 0;
-  background: url("/assets/home/重要节日1.svg") center / contain no-repeat;
+  background: url("/redmansion-h5/assets/home/重要节日1.svg") center / contain no-repeat;
 }
 
 .copyright-button {
@@ -746,3 +758,4 @@ button {
   height: 36px;
   border-radius: 50%;
 }
+
