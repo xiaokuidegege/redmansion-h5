@@ -8,7 +8,7 @@ const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, ''
 const MONTH_CONFIGS = [
   {
     title: '正月',
-    scene: '/assets/home/正月.svg',
+    scene: '/assets/home/1.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 1,
     gregorianMonth: '2026年1月',
@@ -20,7 +20,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '二月',
-    scene: '/assets/home/二月.svg',
+    scene: '/assets/home/2.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 2,
     gregorianMonth: '2026年2月',
@@ -32,7 +32,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '三月',
-    scene: '/assets/home/三月.svg',
+    scene: '/assets/home/3.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 3,
     gregorianMonth: '2026年3月',
@@ -44,7 +44,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '四月',
-    scene: '/assets/home/四月.svg',
+    scene: '/assets/home/4.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 4,
     gregorianMonth: '2026年4月',
@@ -56,7 +56,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '五月',
-    scene: '/assets/home/五月.svg',
+    scene: '/assets/home/5.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 5,
     gregorianMonth: '2026年5月',
@@ -68,7 +68,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '六月',
-    scene: '/assets/home/六月.svg',
+    scene: '/assets/home/6.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 6,
     gregorianMonth: '2026年6月',
@@ -80,7 +80,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '七月',
-    scene: '/assets/home/七月.svg',
+    scene: '/assets/home/7.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 7,
     gregorianMonth: '2026年7月',
@@ -92,7 +92,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '八月',
-    scene: '/assets/home/八月.svg',
+    scene: '/assets/home/8.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 8,
     gregorianMonth: '2026年8月',
@@ -104,7 +104,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '九月',
-    scene: '/assets/home/九月.svg',
+    scene: '/assets/home/9.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 9,
     gregorianMonth: '2026年9月',
@@ -116,7 +116,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '十月',
-    scene: '/assets/home/十月.svg',
+    scene: '/assets/home/10.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 10,
     gregorianMonth: '2026年10月',
@@ -128,7 +128,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '冬月',
-    scene: '/assets/home/冬月.svg',
+    scene: '/assets/home/11.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 11,
     gregorianMonth: '2026年11月',
@@ -140,7 +140,7 @@ const MONTH_CONFIGS = [
   },
   {
     title: '腊月',
-    scene: '/assets/home/腊月.svg',
+    scene: '/assets/home/12.webp',
     gregorianYear: 2026,
     gregorianMonthNumber: 12,
     gregorianMonth: '2026年12月',

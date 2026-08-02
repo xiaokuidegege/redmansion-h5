@@ -1,12 +1,12 @@
 ﻿@font-face {
   font-family: "HonglouXingkai";
-  src: url("/redmansion-h5/fonts/行楷.TTF") format("truetype");
+  src: url("/redmansion-h5/fonts/HonglouXingkai.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "HonglouKaiti";
-  src: url("/redmansion-h5/fonts/楷体.TTF") format("truetype");
+  src: url("/redmansion-h5/fonts/HonglouKaiti.woff2") format("woff2");
   font-display: swap;
 }
 
