@@ -1,0 +1,748 @@
+@font-face {
+  font-family: "HonglouXingkai";
+  src: url("/fonts/行楷.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HonglouKaiti";
+  src: url("/fonts/楷体.TTF") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  color: #2b211a;
+  background: #111;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page {
+  position: relative;
+  width: 393px;
+  height: 852px;
+  flex: 0 0 auto;
+  transform-origin: center center;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.home-page,
+.copyright-page,
+.search-page,
+.detail-page {
+  background: url("/assets/home/bg-01.webp") center / cover no-repeat;
+}
+
+.home-page img,
+.copyright-page img,
+.search-page img,
+.detail-page img {
+  position: absolute;
+  display: block;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.nav-today {
+  top: 19px;
+  left: 22px;
+  width: 52px;
+  z-index: 8;
+}
+
+.nav-search {
+  top: 19px;
+  left: 90px;
+  width: 96px;
+  z-index: 8;
+}
+
+.lantern {
+  top: -1px;
+  right: 20px;
+  width: 43px;
+  z-index: 8;
+  transform-origin: 50% 8%;
+  animation: lantern-sway 3.2s ease-in-out infinite;
+}
+
+@keyframes lantern-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.hotspot-info {
+  top: 0;
+  right: 16px;
+  width: 50px;
+  height: 58px;
+}
+
+.month-scene {
+  top: 58px;
+  left: 0;
+  width: 393px;
+  opacity: 0.72;
+  z-index: 1;
+}
+
+.poem-text {
+  position: absolute;
+  top: 78px;
+  left: 26px;
+  width: 132px;
+  height: 126px;
+  z-index: 4;
+  color: #606060;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.poem-lines {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 132px;
+  height: 112px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  z-index: 1;
+}
+
+.poem-lines i {
+  display: block;
+  width: 1px;
+  height: 112px;
+  justify-self: center;
+  background: #753420;
+}
+
+.poem-columns {
+  position: absolute;
+  top: -5px;
+  left: 13px;
+  width: 106px;
+  height: 126px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 2;
+}
+
+.poem-columns span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.month-title {
+  position: absolute;
+  top: 78px;
+  left: 185px;
+  z-index: 5;
+  margin: 0;
+  color: #050403;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0;
+  writing-mode: vertical-rl;
+}
+
+.month-note {
+  position: absolute;
+  top: 78px;
+  right: 35px;
+  z-index: 5;
+  margin: 0;
+  color: #30251e;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 1px;
+}
+
+.calendar-panel {
+  position: absolute;
+  left: 8px;
+  top: 336px;
+  z-index: 6;
+  width: 377px;
+  height: 452px;
+}
+
+.calendar-border {
+  inset: 0;
+  width: 377px;
+  z-index: 1;
+}
+
+.calendar-grid {
+  position: absolute;
+  top: 46px;
+  left: 12.5px;
+  z-index: 3;
+  width: 352px;
+  height: 387px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  align-items: stretch;
+  justify-items: stretch;
+  padding: 0;
+  gap: 0;
+}
+
+.calendar-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-top: 7px;
+  min-width: 0;
+  min-height: 0;
+  color: #14110f;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  text-align: center;
+  line-height: 1;
+}
+
+.calendar-cell.is-empty {
+  visibility: hidden;
+}
+
+.calendar-cell.is-today {
+  background: rgba(139, 37, 5, 0.26);
+}
+
+.calendar-date {
+  display: block;
+  width: 100%;
+  font-size: 17px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.calendar-lunar {
+  display: block;
+  width: 100%;
+  margin-top: 1px;
+  color: #30251e;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 9px;
+  line-height: 10px;
+  text-align: center;
+}
+
+.calendar-events {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+.calendar-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 34px;
+  min-width: 0;
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 8.8px;
+  line-height: 9px;
+  white-space: nowrap;
+}
+
+.calendar-event img {
+  position: static;
+  width: 9px;
+  height: 12px;
+  margin-bottom: 1px;
+  object-fit: contain;
+}
+
+.calendar-event span {
+  display: block;
+  max-width: 36px;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.legend {
+  position: absolute;
+  left: 105px;
+  bottom: 31px;
+  z-index: 8;
+  display: flex;
+  gap: 23px;
+  align-items: center;
+  color: #4f3c31;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.legend-item {
+  position: relative;
+  white-space: nowrap;
+}
+
+.legend-item::before {
+  content: "";
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  width: 7px;
+  height: 12px;
+  transform: translateY(-50%);
+  border-radius: 4px 4px 2px 2px;
+  background: #b43f28;
+}
+
+.legend-flower::before {
+  left: -17px;
+  width: 15px;
+  height: 20px;
+  border-radius: 0;
+  background: url("/assets/home/节气1.svg") center / contain no-repeat;
+}
+
+.legend-person::before {
+  left: -16px;
+  width: 14px;
+  height: 18px;
+  border-radius: 0;
+  background: url("/assets/home/人物生辰·1.svg") center / contain no-repeat;
+}
+
+.legend-festival::before {
+  left: -16px;
+  width: 14px;
+  height: 18px;
+  border-radius: 0;
+  background: url("/assets/home/重要节日1.svg") center / contain no-repeat;
+}
+
+.copyright-button {
+  right: 20px;
+  bottom: 22px;
+  width: 32px;
+  z-index: 9;
+}
+
+.copyright-page-art {
+  inset: 0;
+  width: 393px;
+  z-index: 1;
+}
+
+.copyright-back {
+  position: absolute;
+  top: 18px;
+  left: 23px;
+  z-index: 10;
+  width: 33px;
+  height: 33px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.copyright-back img {
+  inset: 0;
+  width: 33px;
+}
+
+.copyright-title {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  margin: 0;
+  color: #18120f;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 8px;
+}
+
+.copyright-card {
+  position: absolute;
+  top: 166px;
+  left: 39px;
+  z-index: 4;
+  width: 314px;
+  min-height: 520px;
+  padding: 31px 38px 28px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.66);
+  color: #111;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 13px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.copyright-card h2 {
+  margin: 0 0 23px;
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.copyright-card p {
+  margin: 0;
+}
+
+.copyright-card h3 {
+  position: relative;
+  margin: 20px 0 20px;
+  color: #8b2505;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.copyright-card h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 1px;
+  background: #b54a29;
+}
+
+.copyright-card dl {
+  margin: 0;
+}
+
+.copyright-card dl div {
+  display: flex;
+  justify-content: center;
+  margin: 1px 0;
+}
+
+.copyright-card dt,
+.copyright-card dd {
+  margin: 0;
+}
+
+.copyright-card dt {
+  font-weight: 700;
+}
+
+.copyright-date {
+  margin-top: 12px !important;
+  font-weight: 700;
+}
+
+.copyright-warning {
+  margin: 21px 0 8px !important;
+  font-weight: 700;
+}
+
+.copyright-copy {
+  text-align: center;
+}
+
+.search-title {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  margin: 0;
+  color: #1f1712;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 6px;
+}
+
+.search-panel {
+  position: absolute;
+  top: 88px;
+  left: 28px;
+  z-index: 4;
+  width: 337px;
+  height: 682px;
+  padding: 22px 18px;
+  border: 1px solid rgba(139, 37, 5, 0.45);
+  background: rgba(255, 248, 236, 0.48);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #8b2505;
+  background: rgba(255, 255, 255, 0.36);
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+}
+
+.search-box span {
+  margin-right: 8px;
+  font-size: 15px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #2b211a;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 15px;
+}
+
+.search-box input::placeholder {
+  color: rgba(88, 66, 51, 0.62);
+}
+
+.search-results {
+  height: 596px;
+  margin-top: 16px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.search-result {
+  display: block;
+  width: 100%;
+  margin: 0 0 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(139, 37, 5, 0.3);
+  background: rgba(255, 255, 255, 0.26);
+  color: #2b211a;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-result-date {
+  display: block;
+  color: #704331;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.search-result-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 5px;
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.search-result-main strong {
+  font-weight: 700;
+}
+
+.hot-searches {
+  padding: 18px 5px;
+  color: #2b211a;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  text-align: center;
+}
+
+.hot-searches h2 {
+  margin: 0 0 20px;
+  color: #8b2505;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.hot-search-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 16px;
+}
+
+.hot-search-list button {
+  min-height: 36px;
+  border: 1px solid rgba(139, 37, 5, 0.5);
+  background: rgba(255, 255, 255, 0.22);
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-empty {
+  margin: 90px 0 0;
+  color: rgba(43, 33, 26, 0.72);
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 15px;
+  text-align: center;
+}
+
+.detail-title {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  margin: 0;
+  color: #1f1712;
+  font-family: "HonglouXingkai", "STXingkai", "KaiTi", serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 6px;
+}
+
+.detail-card {
+  position: absolute;
+  top: 188px;
+  left: 43px;
+  z-index: 4;
+  width: 307px;
+  min-height: 330px;
+  padding: 42px 34px;
+  border: 1px solid rgba(139, 37, 5, 0.36);
+  background: rgba(255, 255, 255, 0.45);
+  color: #2b211a;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  text-align: center;
+}
+
+.detail-date {
+  margin: 0;
+  color: #704331;
+  font-size: 15px;
+}
+
+.detail-lunar {
+  margin: 8px 0 0;
+  color: #704331;
+  font-size: 15px;
+}
+
+.detail-type {
+  width: 88px;
+  margin: 28px auto 0;
+  padding: 5px 0;
+  border-top: 1px solid #8b2505;
+  border-bottom: 1px solid #8b2505;
+  color: #8b2505;
+  font-size: 13px;
+}
+
+.detail-card h2 {
+  margin: 25px 0 0;
+  color: #8b2505;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.detail-calendar-link {
+  margin-top: 36px;
+  padding: 8px 22px;
+  border: 1px solid #8b2505;
+  background: rgba(255, 255, 255, 0.2);
+  color: #8b2505;
+  font-family: "HonglouKaiti", "KaiTi", "STKaiti", serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.hotspot {
+  position: absolute;
+  z-index: 10;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hotspot-today {
+  top: 18px;
+  left: 22px;
+  width: 38px;
+  height: 28px;
+}
+
+.hotspot-search {
+  top: 18px;
+  left: 79px;
+  width: 68px;
+  height: 28px;
+}
+
+.hotspot-copyright {
+  right: 18px;
+  bottom: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
